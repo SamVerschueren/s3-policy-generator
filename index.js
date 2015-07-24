@@ -28,7 +28,7 @@ exports.handler = function(event, context) {
     
     // Create the policy document
     var policy = {
-        expiration: expiration.format(),
+        expiration: expiration.format('YYYY-MM-DD[T]HH:mm:ss[Z]'),
         conditions: [
             { bucket: 'app-selfies'},
             { acl: 'private' },
@@ -43,7 +43,7 @@ exports.handler = function(event, context) {
     var base64Policy = new Buffer(JSON.stringify(policy)).toString('base64');
     
     // Calculate the signature of the base64 string
-    var signature = crypto.createHash('sha1', aws.AWS_SECRET_ACCESS_KEY);
+    var signature = crypto.createHmac('sha1', aws.AWS_SECRET_ACCESS_KEY);
     signature.update(base64Policy);
     signature = signature.digest('base64');
     

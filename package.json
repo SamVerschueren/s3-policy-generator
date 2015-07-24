@@ -1,0 +1,24 @@
+{
+  "name": "SelfieWall-S3",
+  "version": "0.0.1",
+  "description": "Microservice that generates the policy document and returns a unique filename for the uploader.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SamVerschueren/selfie-wall-s3-service.git"
+  },
+  "keywords": [
+    "selfiewall",
+    "s3",
+    "policy"
+  ],
+  "author": "Sam Verschueren",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SamVerschueren/selfie-wall-s3-service/issues"
+  },
+  "homepage": "https://github.com/SamVerschueren/selfie-wall-s3-service"
+}

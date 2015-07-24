@@ -27,7 +27,7 @@ exports.handler = function(event, context) {
     var policy = {
         expiration: expiration.format(),
         conditions: [
-            { bucket: 'app-selfies '},
+            { bucket: 'app-selfies'},
             { acl: 'private' },
             ['starts-with', '$filename', ''],
             ['starts-with', '$key', ''],

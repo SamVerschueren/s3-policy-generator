@@ -1,6 +1,6 @@
 {
   "name": "SelfieWall-S3",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Microservice that generates the policy document and returns a unique filename for the uploader.",
   "main": "index.js",
   "scripts": {

@@ -10,6 +10,8 @@
  */
 
 // module dependencies
+var crypto = require('crypto'),
+    moment = require('moment');
 
 /**
  * Main entrypoint of the service.
@@ -18,5 +20,34 @@
  * @param {object}  context     The AWS Lambda execution context.
  */
 exports.handler = function(event, context) {
+    // Calculate the expiration date
+    var expiration = moment().add(30, 'minutes');
     
+    // Create the policy document
+    var policy = {
+        expiration: expiration.format(),
+        conditions: [
+            { bucket: 'app-selfies '},
+            { acl: 'private' },
+            ['starts-with', '$filename', ''],
+            ['starts-with', '$key', ''],
+            ['starts-with', '$Content-Type', ''],
+            ['content-length-range', 0, 1048576]
+        ]
+    };
+    
+    // Convert the policy to a base64 string
+    var base64Policy = new Buffer(JSON.stringify(policy)).toString('base64');
+    
+    // Calculate the signature of the base64 string
+    var signature = crypto.createHash('sha1', process.env.AWS_SECRET_ACCESS_KEY);
+    signature.update(base64Policy);
+    signature = signature.digest('base64');
+    
+    // Return the json object
+    context.succeed({
+        policy: base64Policy,
+        signature: signature,
+        key: context.awsRequestId
+    });
 };

@@ -31,7 +31,7 @@ gulp.task('zip', function() {
     });
     
     // Zip the code
-    return gulp.src(['./**', '!README.md', '!.gitignore', '!gulpfile.js', '!./{dist,dist/**}'].concat(ignore), {base: '.'})
+    return gulp.src(['./**', '!README.md', '!.gitignore', '!gulpfile.js', '!aws.sample.json', '!./{dist,dist/**}'].concat(ignore), {base: '.'})
         .pipe(zip(name + '.zip'))
         .pipe(gulp.dest('dist'));
 });

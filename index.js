@@ -13,6 +13,9 @@
 var crypto = require('crypto'),
     moment = require('moment');
 
+// Load the aws config file
+var aws = require('./aws.json');
+
 /**
  * Main entrypoint of the service.
  * 
@@ -40,7 +43,7 @@ exports.handler = function(event, context) {
     var base64Policy = new Buffer(JSON.stringify(policy)).toString('base64');
     
     // Calculate the signature of the base64 string
-    var signature = crypto.createHash('sha1', process.env.AWS_SECRET_ACCESS_KEY);
+    var signature = crypto.createHash('sha1', aws.AWS_SECRET_ACCESS_KEY);
     signature.update(base64Policy);
     signature = signature.digest('base64');
     

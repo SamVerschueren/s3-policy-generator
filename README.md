@@ -1,6 +1,10 @@
-# selfie-wall-s3-service
+# s3-policy-generator
 
 > Microservice that generates the policy document and returns a unique filename for the uploader.
+
+## Usage
+
+This AWS Lambda microservice can be used to generate a policy document for [browser-based uploads](http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-UsingHTTPPOST.html).
 
 ## Configuration
 

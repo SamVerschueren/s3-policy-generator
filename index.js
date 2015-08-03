@@ -50,7 +50,6 @@ exports.handler = function(event, context) {
     // Return the json object
     context.succeed({
         policy: base64Policy,
-        signature: signature,
-        key: context.awsRequestId
+        signature: signature
     });
 };
